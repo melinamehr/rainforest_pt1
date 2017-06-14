@@ -21,22 +21,23 @@ class ProductsController < ApplicationController
     end
   end
 
-private
-
-  def product_params
-    params.require(:product).permit(:name, :description, :price_in_cents)
-  end
-
   def edit
+     @product = Product.find(params[:id])
   end
 
   def destory
   end
 
   def update
-    # @product = Product.find(params[:id])
-    # @product.update(product_params)
-    # redirect_to "/"
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    redirect_to "/"
   end
+
+  private
+
+    def product_params
+      params.require(:product).permit(:name, :description, :price_in_cents)
+    end
 
 end
