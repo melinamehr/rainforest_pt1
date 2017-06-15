@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :reviews, except: [:index, :new, :show]
   end
 
-
+  get 'products' => 'products#index'
 end
