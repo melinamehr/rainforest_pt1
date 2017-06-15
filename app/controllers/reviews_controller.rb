@@ -10,14 +10,23 @@ class ReviewsController < ApplicationController
     @review = @product.reviews.new(review_params)
     if @review.save
       redirect_to product_path(@review.product)
-    # else
-    #   :render 'products'
     end
   end
 
-  # def edit
-  #   @review = Review.find(params[:id])
-  # end
+  def edit
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:product_id])
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      render 'products/show'
+    else
+      render 'products/show'
+    end
+  end
+
 
   def destroy
     @review = Review.find(params[:id])
