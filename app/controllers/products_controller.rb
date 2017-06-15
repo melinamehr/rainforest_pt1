@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
+      flash[:notice] = "Product Saved!"
       redirect_to "/products"
     else
       render :new
@@ -25,16 +26,22 @@ class ProductsController < ApplicationController
      @product = Product.find(params[:id])
   end
 
-  def destory
+  def destroy
+    @product = Produt.find(params[:id])
+    @product.destroy
+    flash[:alert] = "Product Deleted!"
+    redirect_to "/products"
   end
 
   def update
     @product = Product.find(params[:id])
-    @product.update(product_params)
-    redirect_to "/"
+    if @product.update(prpduc_params)
+      flash[:notice] = "Product Updated!"
+      redirect_to @product
+    else
+      redirect_back_or_to @product
+    end
   end
-
-  private
 
     def product_params
       params.require(:product).permit(:name, :description, :price_in_cents)
