@@ -6,11 +6,12 @@ class ReviewsController < ApplicationController
   # @review = @product.reviews.build
 
   def create
-    @review = Review.new(review_params.merge({product_id:params[:product_id]}))  #.merge to join w past comments?
+    @product = Product.find(params[:product_id])
+    @review = @product.reviews.new(review_params)
     if @review.save
       redirect_to product_path(@review.product)
-    else
-      :render 'products'
+    # else
+    #   :render 'products'
     end
   end
 
@@ -22,9 +23,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
     redirect_to product_path(@review.product)
-
   end
-
 
   private
 

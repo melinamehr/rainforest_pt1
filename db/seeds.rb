@@ -23,12 +23,12 @@
 #   price_in_cents: 399
 # )
 # puts "..."
-Review.create(
-  comment:  'Delicious! Highly recommended for anyone and everyone. Will definitely be having again.',
-  product_id: Product.first.id
-)
-
-Review.create(
-  comment:  'So fishy! Would have liked some more salt n peppa',
-  product_id: Product.second.id
-)
+# Review.create(
+#   comment:  'The best I have ever had',
+#   product_id: Product.first.id
+# )
+#
+# Review.create(
+#   comment:  'Really good, seriously guys get this sandwich',
+#   product_id: Product.second.id
+# )
