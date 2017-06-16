@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
     redirect_to product_path(@review.product)
   end
 
-  private
+private
 
   def review_params
     params.require(:review).permit(:comment)
